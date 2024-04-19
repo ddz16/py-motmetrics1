@@ -83,8 +83,10 @@ python motmetrics/apps/eval_motchallenge.py
 
 有很多人问motp为啥那么大，不是0-1之间的数。
 注意，我前面已经说了，我自己的数据比较特殊。
-motp公式如下
+motp公式如下：
+
 ![image](https://github.com/ddz16/py-motmetrics/assets/45875562/edbc8af9-f0e6-4ab8-8de5-1d549e19fcf2)
+
 其中d表示匹配框之间的距离，一般用框之间的iou来计算。因为iou是0-1的，所以motp会小于1。但是，我这里是用匹配框中心点距离来计算的d，它的范围并不是0-1，甚至可能很大，所以对应的motp会很大。
 如果你想按照iou来算，得到0-1之间的motp，可以改下面的代码，把这几行去掉就行（注意，这时你得换别的数据，最好是匹配框之间有重叠的数据，别用我给的数据了）：
 ![image](https://github.com/ddz16/py-motmetrics/assets/45875562/174dbffa-325f-4b69-9fb1-4d4a19a13bdf)
